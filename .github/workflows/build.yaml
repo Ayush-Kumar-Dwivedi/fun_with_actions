@@ -1,0 +1,17 @@
+name: Compile C Binary
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repo
+          uses: actions/checkout@v4
+
+        - name: Compile
+          run: gcc -02 -Wall main.c -o app
+
