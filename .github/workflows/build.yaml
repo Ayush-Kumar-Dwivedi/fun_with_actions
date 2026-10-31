@@ -5,21 +5,20 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out repo
-          uses: actions/checkout@v4
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
 
-        - name: Compile
-          run:|
-             gcc -02 -Wall main.c -o app
-             chmod +x app
-          
-        - name: Excecute binary and Display
-          run: |
-           echo "=============== Output Start ==================="
-           ./app
-           echo "=============== Output End ====================="
-          
+      - name: Compile
+        run: |
+          gcc -O2 -Wall main.c -o app
+          chmod +x app
+
+      - name: Execute binary and Display
+        run: |
+          echo "=============== Output Start ==================="
+          ./app
+          echo "=============== Output End ====================="
